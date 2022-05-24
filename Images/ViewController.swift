@@ -18,7 +18,8 @@ class ViewController: UITableViewController {
         
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
-        let items = try! fm.contentsOfDirectory(atPath: path)
+        var items = try! fm.contentsOfDirectory(atPath: path)
+        items.sort()
 
         for item in items {
             if item.hasPrefix("nssl") {
@@ -45,6 +46,7 @@ class ViewController: UITableViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             // 2: success! Set its selectedImage property
             vc.selectedImage = pictures[indexPath.row]
+            vc.positionImage = "Imagem \(String(indexPath.row + 1)) de \(String(pictures.count))"
 
             // 3: now push it onto the navigation controller
             navigationController?.pushViewController(vc, animated: true)

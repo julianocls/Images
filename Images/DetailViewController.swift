@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     var selectedImage: String?
+    var positionImage: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,7 @@ class DetailViewController: UIViewController {
             imageView.image  = UIImage(named: imageToLoad)
         }
         
-        title = selectedImage
+        title = selectedImage! + " - " + positionImage!
         navigationItem.largeTitleDisplayMode = .never
     }
 
